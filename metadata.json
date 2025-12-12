@@ -1,0 +1,8 @@
+{
+  "name": "E-Parking NFC System",
+  "description": "A simulation of the Android E-Parking system with Firebase integration, logic visualization, and ESP32 firmware generation.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
