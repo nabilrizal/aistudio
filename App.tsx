@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import ParkingCard from './components/ParkingCard';
 import StatusPanel from './components/StatusPanel';
 import Esp32Code from './components/Esp32Code';
-import { Car, Code2, LayoutDashboard } from 'lucide-react';
+import AndroidCode from './components/AndroidCode';
+import { Car, Code2, LayoutDashboard, Smartphone } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'app' | 'firmware'>('app');
+  const [activeTab, setActiveTab] = useState<'app' | 'android' | 'firmware'>('app');
 
   return (
     <div className="min-h-screen bg-gray-100 pb-10">
@@ -25,13 +26,19 @@ export default function App() {
             <nav className="flex gap-1">
                 <button 
                     onClick={() => setActiveTab('app')}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${activeTab === 'app' ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:bg-gray-50'}`}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${activeTab === 'app' ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:bg-gray-50'}`}
                 >
-                    <LayoutDashboard size={16} /> System
+                    <LayoutDashboard size={16} /> Simulation
+                </button>
+                <button 
+                    onClick={() => setActiveTab('android')}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${activeTab === 'android' ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:bg-gray-50'}`}
+                >
+                    <Smartphone size={16} /> Android Project
                 </button>
                 <button 
                     onClick={() => setActiveTab('firmware')}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${activeTab === 'firmware' ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:bg-gray-50'}`}
+                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${activeTab === 'firmware' ? 'bg-blue-50 text-blue-700' : 'text-gray-600 hover:bg-gray-50'}`}
                 >
                     <Code2 size={16} /> ESP32 Code
                 </button>
@@ -66,6 +73,10 @@ export default function App() {
                     <h2 className="text-lg font-bold text-gray-800">System State & Hardware</h2>
                     <StatusPanel />
                 </div>
+            </div>
+        ) : activeTab === 'android' ? (
+            <div className="max-w-4xl mx-auto">
+                 <AndroidCode />
             </div>
         ) : (
             <div className="max-w-4xl mx-auto">
